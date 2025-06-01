@@ -1,0 +1,5 @@
+.main-content {
+    padding: 16px;
+    /* 如果内容本身需要滚动，外部可以留空，也可自行添加 overflow */
+  }
+  

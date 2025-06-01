@@ -1,0 +1,90 @@
+/* ContentDropdown.css —— 同 “歌曲选择” 下拉框保持一致的绿色主题 */
+
+.content-dropdown-container {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+.content-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #e8f8e8;       /* 与 SongDropdown 对齐 */
+  border: 1px solid #b4deb3;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 3px rgba(50, 115, 75, 0.1);
+}
+
+.content-dropdown-header:hover {
+  background-color: #d4f1d4;
+  box-shadow: 0 2px 6px rgba(50, 115, 75, 0.12);
+}
+
+.content-dropdown-label {
+  font-size: 14px;
+  color: #2d6a4f;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.arrow.down {
+  border-top: 6px solid #2d6a4f;
+}
+
+.arrow.up {
+  border-bottom: 6px solid #2d6a4f;
+}
+
+.content-dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 220px;
+  overflow-y: auto;
+  background-color: #f0fcf0;
+  border: 1px solid #b4deb3;
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(50, 115, 75, 0.08);
+  padding: 6px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.content-dropdown-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: rgba(50, 115, 75, 0.15);
+  border-radius: 3px;
+}
+
+.dropdown-item {
+  padding: 10px 14px;
+  margin: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  color: #2d6a4f;
+}
+
+.dropdown-item:hover {
+  background-color: #e0f7e0;
+}
+
+.dropdown-item.selected {
+  background-color: #c1eac1;
+}
