@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../styles/SongSelector.css';
 
 /**
- * SongDropdown 组件：点击“歌曲选择”标题后，动态展开或收起歌曲列表
+ * SongSelector 组件：点击“歌曲选择”标题后，动态展开或收起歌曲列表
  *
  * Props：
  * @param {Array<{id: string|number, name: string, artist: string, url: string}>} songList

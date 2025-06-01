@@ -4,6 +4,7 @@ import SongSelector from './SongSelector';
 import ContentSelector from './ContentSelector';
 import '../styles/Sidebar.css';
 import TextPressure from './blocks/TextAnimations/TextPressure/TextPressure';
+import SongCover from './SongCover';
 
 /**
  * Sidebar 组件 Props 接口：
@@ -67,10 +68,10 @@ const Sidebar = ({
           onSelectContent={onSelectContent}
         />
       </div>
-
-      <div>
-        
+      <div className="sidebar-cover">
+        <SongCover selectedSong={selectedSong} />
       </div>
+
     </div>
   );
 };

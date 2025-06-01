@@ -1,8 +1,16 @@
+/* src/components/Sidebar.css */
+
 .sidebar-container {
+  width: 240px;
+  background-color: #eef9ee; 
+  border-right: 1px solid #c3e6cb;
+  display: flex;
+  flex-direction: column;
   padding: 16px;
   box-sizing: border-box;
 }
 
+/* 各个选择区的样式保持不变 */
 .sidebar-section {
   margin-bottom: 24px;
 }
@@ -10,5 +18,25 @@
 .sidebar-title {
   margin: 0 0 8px 0;
   font-size: 16px;
-  color: #2d6a4f; /* 深绿色标题文字 */
+  color: #2d6a4f;
+}
+
+.sidebar-cover {
+  width: 100%; /* 填满侧边栏宽度 */
+  height: 30%;
+  border-radius: 8px;
+  margin-top: auto; /* 将其推到容器底部 */
+  margin-left: 0%;
+  position: relative;
+}
+
+.sidebar-cover-text {
+  bottom: 10px;
+  left: 10px;
+  color: #ffffff;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.1); /* 半透明背景 */
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-align: center;
 }

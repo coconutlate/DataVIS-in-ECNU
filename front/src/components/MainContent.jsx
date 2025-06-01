@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Home from './views/Home';
-import Music from './views/Music';
-import Word from './views/Word';
+import Home from './Home';
+import Music from './Music';
+import Word from './Word';
 import '../styles/MainContent.css';
 
 /**
