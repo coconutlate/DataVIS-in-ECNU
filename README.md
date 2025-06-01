@@ -6,3 +6,11 @@
 
 
 
+要手动改
+APP和home中的song
+
+
+### Home
+
+歌单的颜色在\src\components\blocks\Components\FlowingMenu\FlowingMenu.css
+中的 .menu__item-link 条目

@@ -1,0 +1,96 @@
+/* HomeView.css */
+
+/* 最外层容器，100% 宽度，高度可随内容撑开 */
+.home-container {
+    display: grid;
+    grid-template-columns: 55% 1fr; /* 左侧 40%，右侧 自适应 */
+    box-sizing: border-box;
+    height:100%;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden; /* 隐藏超出内容 */
+  }
+  
+  /* 左侧侧边栏样式 */
+  .home-left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;       /* 继承自 .home-container 的 100vh */
+    box-sizing: border-box;
+  
+    /* 左右内边距可酌情保留，但不要上下加 padding，防止超高 */
+    padding-left: 4px;
+    padding-right: 4px;
+  
+    gap: 8px;           /* 让两个子元素之间留 8px 间隙，按需调小/调大 */
+  }
+  
+  /* “封面” 或可视化框，强制占父容器高度的 40% */
+  .cover-box {
+    flex: 0 0 40%;
+    background-color: #f5fff3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* 如果你内部要放 Canvas 或 FlowingMenu，可以再给它们各自的样式 */
+  }
+  
+  /* “歌曲列表” 那块，占父容器高度的 60% 并且内部滚动 */
+  .song-list-box {
+    flex: 0 0 60%;
+    background-color: #f5fff3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
+  
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* 只有这块会出现滚动条 */
+    
+    /* 如果 FlowingMenu 本身高度超出，还可以给 FlowingMenu 内部添加 overflow-y:auto */
+  }
+  
+  
+  /* 右侧整体容器 */
+  .home-right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;   /* 继承自 .home-container 的 100vh */
+    box-sizing: border-box;
+  
+    /* 左右内边距，可按需保留少量 */
+    padding-left: 8px;
+    padding-right: 8px;
+  
+    gap: 8px;       /* 子元素之间的间距 */
+  }
+  
+  /* 上方标题 / 封面区域 */
+  .title-box {
+    flex: 0 0 30%;  /* 刚好占父容器高度的 40% */
+    background-color: #f5fff3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+  }
+  
+  /* 下方“网友简介”占 60%，并在内容过多时滚动 */
+  .sub-box {
+    flex: 0 0 70%;
+    background-color: #f5fff3;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
+  
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* 这块会自己出现滚动 */
+    align-items: center;
+    justify-content: center;
+    color: rgb(21, 17, 17);
+  }
+  

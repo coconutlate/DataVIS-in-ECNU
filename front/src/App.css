@@ -23,5 +23,5 @@
   flex: 1;
   background-color: #fbfff9; /* 近白的柔和绿色底色 */
   overflow: auto;
-  padding: 16px;
+  /* padding: 16px; */
 }
