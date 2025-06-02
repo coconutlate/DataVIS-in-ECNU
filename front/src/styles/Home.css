@@ -79,7 +79,7 @@
     color: black;
   }
   
-  /* 下方“网友简介”占 60%，并在内容过多时滚动 */
+  /* 下方占 60%，并在内容过多时滚动 */
   .sub-box {
     flex: 0 0 70%;
     background-color: #f5fff3;

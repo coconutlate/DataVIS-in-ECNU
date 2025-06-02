@@ -27,7 +27,7 @@ function Home() {
         </div>
       </aside>
 
-      {/* 右侧：上方“标题”卡片 + 下方“网友简介”卡片 */}
+      {/* 右侧：上方“标题”卡片 + 下方卡片 */}
       <aside className="home-right">
         <div className="title-box">
           <FuzzyText 
