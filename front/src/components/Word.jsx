@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Word.css';
 import WordBar from './views/Word/WordBar';
+import WordCloud from './views/Word/WordCloud';
 
 
 const Word = ({ song }) => {
@@ -10,7 +11,7 @@ const Word = ({ song }) => {
       {/* 左侧：上面词云 + 链接图 */}
       <aside className="word-left">
         <div className="word-cloud">
-          <h1>awa</h1>
+          <WordCloud song={song} />
         </div>
 
         <div className='word-link'>

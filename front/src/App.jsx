@@ -20,7 +20,7 @@ const CONTENT_OPTIONS = [
  * 格式：{ id: string | number, name: string, artist: string, url: string (歌曲文件地址) … }
  */
 const SONG_LIST = [
-  { id: '1', name: 'Song A', artist: 'Artist A', music_url: '/audio/song-a.mp3', cover_url: 'https://upload.cc/i1/2025/06/01/zZ0Is5.jpg', lyrics: '' },
+  { "id": '1', name: 'Song A', artist: 'Artist A', music_url: '/audio/song-a.mp3', "cover_url": 'https://upload.cc/i1/2025/06/01/zZ0Is5.jpg', lyrics: '' },
   { id: '2', name: 'Song B', artist: 'Artist B', url: '/audio/song-b.mp3' },
   { id: '3', name: 'Song C', artist: 'Artist C', url: '/audio/song-c.mp3' },
 ];
