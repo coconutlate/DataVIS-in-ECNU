@@ -20,7 +20,7 @@ const MainContent = ({ selectedContent, selectedSong }) => {
         return <Music song={selectedSong} />;
       case 'WORD':
         // 把选中的歌曲传给歌词组件
-        return <WORD song={selectedSong} />;
+        return <Word song={selectedSong} />;
       default:
         return <div>请选择左侧菜单</div>;
     }

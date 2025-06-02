@@ -4,9 +4,6 @@ import '../styles/Music.css';
 
 
 const Music = ({ song }) => {
-  if(!song) {
-    return <div>请选择歌曲</div>; // 或者返回一个空的组件
-  }
 
   const { name, artist, music_url, cover_url, lyrics } = song;
   const [isPlaying, setIsPlaying] = useState(false);

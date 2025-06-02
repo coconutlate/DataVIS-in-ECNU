@@ -26,7 +26,7 @@ const SONG_LIST = [
 ];
 
 function App() {
-  const [selectedSong, setSelectedSong] = useState(null);
+  const [selectedSong, setSelectedSong] = useState(SONG_LIST[0]); // 默认选中第一首歌
   const [selectedContent, setSelectedContent] = useState(CONTENT_OPTIONS[0].id);
 
   return (

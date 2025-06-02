@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import '../styles/ContentSelector.css';
 
 /**
@@ -13,11 +13,12 @@ import '../styles/ContentSelector.css';
  * @param {(contentId: string) => void} onSelectContent
  *        — 当用户点击某个选项时的回调，将该内容 ID 传回父组件
  */
-const ContentSelector = ({
+
+function ContentSelector({
   contentOptions,
   selectedContent,
   onSelectContent
-}) => {
+}) {
   // 控制下拉列表展开/收起
   const [isOpen, setIsOpen] = useState(false);
   // 用于监听点击外部以自动关闭列表
