@@ -1,6 +1,6 @@
 // HomeView.js
 import React from 'react';
-import '../styles/Home.css'; // 下文会给出对应的 CSS
+import '../styles/Home.css';
 import FlowingMenu from './blocks/Components/FlowingMenu/FlowingMenu';
 import CircularGallery from './blocks/Components/CircularGallery/CircularGallery';
 import DecryptedText from './blocks/TextAnimations/DecryptedText/DecryptedText';

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Word.css';
 import WordBar from './views/Word/WordBar';
 import WordCloud from './views/Word/WordCloud';
+import WordLink from './views/Word/WordLink';
 
 
 const Word = ({ song }) => {
@@ -15,7 +16,7 @@ const Word = ({ song }) => {
         </div>
 
         <div className='word-link'>
-          <h1>awa</h1>
+          <WordLink song={song} />
         </div>
       </aside>
 

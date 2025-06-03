@@ -20,7 +20,9 @@
   background-color: #f5fff3;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
-  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .music-lyrics {
@@ -60,4 +62,16 @@
   box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
   margin: 5px;
   border: black 1px solid;
+}
+
+.music-sub-cover {
+  width: 80%;
+  height: 80%;
+  position: relative;
+  margin-right: 0%;
+  padding: 0%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

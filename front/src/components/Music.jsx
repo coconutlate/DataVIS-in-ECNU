@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Lyrics from './views/Music/Lyrics';
+import Imaginative from './views/Music/Imaginative';
 import '../styles/Music.css';
+
 
 
 const Music = ({ song }) => {
@@ -27,7 +29,7 @@ const Music = ({ song }) => {
       <div className="music-top">
 
         <div className="music-cover">
-          <h1>意象图</h1>  {/* 歌曲名字 */}
+          <Imaginative song={song} />
         </div>
 
         <div className='music-lyrics'>
@@ -46,25 +48,6 @@ const Music = ({ song }) => {
         </div>
 
       </div>
-    </div>
-  );
-
-  return (
-    <div className="song-player">
-      <div className="cover">
-        <img src={cover_url} alt={name} />
-      </div>
-      <div className="info">
-        <h2>{name}</h2>
-        <p>{artist}</p>
-      </div>
-
-      {/* 控制播放状态的组件 */}
-      <SongController isPlaying={isPlaying} togglePlayState={togglePlayState} music_url={music_url} setCurrentTime={setCurrentTime} />
-      
-      {/* 传递 currentTime 到子组件 */}
-      <Lyrics lyrics={lyrics} currentTime={currentTime} />
-      <Spectrogram currentTime={currentTime} />
     </div>
   );
 };
