@@ -14,3 +14,10 @@ APP和home中的song
 
 歌单的颜色在\src\components\blocks\Components\FlowingMenu\FlowingMenu.css
 中的 .menu__item-link 条目
+
+### Data
+
+App
+Emotion
+WordCloud
+WordBar

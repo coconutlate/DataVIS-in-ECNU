@@ -12,7 +12,8 @@ import './App.css'; // 可以放一些全局布局的样式
 const CONTENT_OPTIONS = [
   { id: 'HOME', label: '首页' },
   { id: 'MUSIC', label: '音乐可视化' },
-  { id: 'WORD', label: '歌词展示' }
+  { id: 'WORD', label: '歌词可视化' },
+  { id: 'EMOTION', label: '情感分析' }
 ];
 
 /**

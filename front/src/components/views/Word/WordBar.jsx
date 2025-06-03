@@ -6,9 +6,9 @@ import '../../../styles/Word.css';
 
 function getData(song) {
   return ([
-    { name: '医学研究', value: 300 },
-    { name: '动物保护', value: 130 },
-    { name: '航海', value: 200 }
+    { 'name': '医学研究', 'value': 300 },
+    { 'name': '动物保护', 'value': 130 },
+    { 'name': '航海', 'value': 200 }
   ]);
 }
 
@@ -17,7 +17,11 @@ function BarDraw(chartDom, song) {
   var option = {
     dataset: {source: getData(song)},
     grid: { containLabel: true },
-    xAxis: { name: '频率' },
+    xAxis: { 
+      name: '频率' ,
+      nameLocation: 'middle',
+      nameGap: 30,
+    },
     yAxis: { type: 'category' },
     series: [
       {

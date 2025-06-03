@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Home from './Home';
 import Music from './Music';
 import Word from './Word';
+import Emotion from './Emotion';
 import '../styles/MainContent.css';
 
 /**
@@ -21,6 +22,8 @@ const MainContent = ({ selectedContent, selectedSong }) => {
       case 'WORD':
         // 把选中的歌曲传给歌词组件
         return <Word song={selectedSong} />;
+      case 'EMOTION':
+        return <Emotion song={selectedSong} />;
       default:
         return <div>请选择左侧菜单</div>;
     }

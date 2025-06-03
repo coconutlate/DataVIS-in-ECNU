@@ -1,0 +1,11 @@
+.emotion-container {
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f5fff3;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(50, 115, 75, 0.1);
+  height:100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden; /* 隐藏超出内容 */
+  }

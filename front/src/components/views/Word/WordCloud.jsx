@@ -7,14 +7,13 @@ import '../../../styles/Word.css';
 
 function getData(song) {
   return ([
-    { name: '医学研究', value: 300 },
-    { name: '动物保护', value: 130 },
-    { name: '航海', value: 200 }
+    { 'name': '医学研究', 'value': 300 },
+    { 'name': '动物保护', 'value': 130 },
+    { 'name': '航海', 'value': 200 }
   ]);
 }
 
 function  CloudDraw(chartDom, song) {
-  console.log('>>> WordCloud 容器尺寸:', chartDom.clientWidth, chartDom.clientHeight);
   var myCloud = echarts.init(chartDom);
 
   var option = {
