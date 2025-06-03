@@ -1,30 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react';
+// https://github.com/mebtte/react-lrc
 
-const Lyrics = ({ lyrics, currentTime }) => {
-  const lyricsRef = useRef(null);
+import React from 'react';
+import {Lrc} from "react-lrc";
 
-  useEffect(() => {
-    if (lyricsRef.current && lyrics.length > 0) {
-      const currentLyric = lyrics.find((lyric) => {
-        const currentTimeInSec = parseFloat(lyric.time);
-        return currentTime >= currentTimeInSec;
-      });
+function Lyrics({ lrcText, currentTime }) {
 
-      if (currentLyric) {
-        lyricsRef.current.scrollTo(0, currentLyric.offsetTop);
-      }
-    }
-  }, [currentTime, lyrics]);
 
   return (
-    <div className="lyrics" ref={lyricsRef}>
-      {lyrics.map((lyric, index) => (
-        <div key={index} className="lyric-line">
-          {lyric.text}
-        </div>
-      ))}
+    <div style={{ width: 400, height: 200, overflow: 'hidden' }}>
+      <Lrc 
+        style = {{ overflow: 'hidden !important' }}
+        recoverAutoScrollInterval = {0}
+        lrc = {lrcText} 
+        currentMillisecond = {currentTime} 
+        verticalSpace = {true}
+      
+      />
     </div>
   );
 };
+
 
 export default Lyrics;

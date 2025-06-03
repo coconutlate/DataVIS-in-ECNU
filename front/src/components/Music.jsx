@@ -1,29 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Lyrics from './views/Music/Lyrics';
 import Imaginative from './views/Music/Imaginative';
+// import Wave from './views/Music/Wave';
+import SongController from './views/Music/SongController';
+import Lyrics from './views/Music/Lyrics';
 import '../styles/Music.css';
 
-
+function getLyrics(song) {
+  // 这里可以根据 song 对象获取对应的歌词
+  // 假设 song 对象有 lyrics 属性，实际项目中可能需要从 API 获取
+  return song.lyrics || '';
+}
 
 const Music = ({ song }) => {
 
-  const { name, artist, music_url, cover_url, lyrics } = song;
-  const [isPlaying, setIsPlaying] = useState(false);
+  // 当前播放时间（单位：秒），用来驱动歌词滚动
   const [currentTime, setCurrentTime] = useState(0);
+  // 可选：如果想让 Music 组件知道当前是否在播放，也可以维护一个 isPlaying
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // 当播放状态改变时，更新播放状态
-  const togglePlayState = () => {
-    setIsPlaying(!isPlaying);
+  // 用来直接调用 SongController 内部 play()/pause()
+  const songControllerRef = useRef(null);
+
+  const lrc = getLyrics(song);
+
+  // 当 ReactAudioWave 播放进度更新时，会传过来 time（秒）
+  const handleTimeChange = (time) => {
+    setCurrentTime(time);
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(prevTime => prevTime + 0.1);  // 假设每 0.1s 更新一次
-    }, 100);
-    return () => clearInterval(interval);
-  }, [isPlaying]);
+  // 当用户在 SongController 里点击「播放」按钮
+  const handlePlayClick = () => {
+    setIsPlaying(true);
+  };
 
+  // 当用户在 SongController 里点击「暂停」按钮
+  const handlePauseClick = () => {
+    setIsPlaying(false);
+  };
 
+  
   return (
     <div className="music-container">
       <div className="music-top">
@@ -33,18 +48,27 @@ const Music = ({ song }) => {
         </div>
 
         <div className='music-lyrics'>
-          <h1>滚动歌词</h1>  {/* lyrics ,*/}
+          <Lyrics lrcText={lrc} currentTime={currentTime} />
         </div>
 
       </div>
       <div className="music-bottom">
 
         <div className="music-chart">
-          <h1>频谱图</h1> {/* music_url */}  
+          {/* react-audio-visualize */}
+          <h1>频谱图</h1> 
+          {/* {analyserNode && <Wave analyserNode={analyserNode} />} */}
         </div>
 
         <div className="music-audio">
-          <h1>播放器</h1>
+          {/* react-audio-wave */}
+          <SongController
+          ref={songControllerRef}
+            audioSrc={song.music_url}
+            onTimeChange={handleTimeChange}
+            onPlayClick={handlePlayClick}
+            onPauseClick={handlePauseClick}
+          />
         </div>
 
       </div>

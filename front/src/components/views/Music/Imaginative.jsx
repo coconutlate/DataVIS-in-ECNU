@@ -8,7 +8,7 @@ function getImage(song) {
 }
 
 
-function Imaginative({ song }) {
+const Imaginative = React.memo(({ song }) => {
 
   return (
     <div className="music-sub-cover">
@@ -27,7 +27,7 @@ function Imaginative({ song }) {
     </div>
   );
 
-}
+})
 
 
 export default Imaginative;
