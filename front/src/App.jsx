@@ -21,7 +21,7 @@ const CONTENT_OPTIONS = [
  * 格式：{ id: string | number, name: string, artist: string, url: string (歌曲文件地址) … }
  */
 const SONG_LIST = [
-  { "id": '1', name: '交换余生', artist: '林俊杰', music_url: '/林俊杰-交换余生.mp3', "cover_url": 'https://upload.cc/i1/2025/06/01/zZ0Is5.jpg', lyrics: '/林俊杰-交换余生.lrc' },
+  { "id": '1', 'name': '交换余生', 'artist': '林俊杰', 'music_url': '/林俊杰-交换余生.mp3', "cover_url": 'https://upload.cc/i1/2025/06/01/zZ0Is5.jpg', 'lyrics': '/林俊杰-交换余生.lrc' },
   { "id": '2', name: 'Song B', artist: 'Artist B', music_url: '/audio/song-a.mp3', "cover_url": 'https://upload.cc/i1/2025/06/01/zZ0Is5.jpg', lyrics: '' },
 ];
 

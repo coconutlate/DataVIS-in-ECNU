@@ -5,11 +5,6 @@ import SongController from './views/Music/SongController';
 import Lyrics from './views/Music/Lyrics';
 import '../styles/Music.css';
 
-function getLyrics(song) {
-  // 这里可以根据 song 对象获取对应的歌词
-  // 假设 song 对象有 lyrics 属性，实际项目中可能需要从 API 获取
-  return song.lyrics || '';
-}
 
 const Music = ({ song }) => {
 
@@ -20,8 +15,6 @@ const Music = ({ song }) => {
 
   // 用来直接调用 SongController 内部 play()/pause()
   const songControllerRef = useRef(null);
-
-  const lrc = getLyrics(song);
 
   // 当 ReactAudioWave 播放进度更新时，会传过来 time（秒）
   const handleTimeChange = (time) => {
@@ -48,7 +41,7 @@ const Music = ({ song }) => {
         </div>
 
         <div className='music-lyrics'>
-          <Lyrics lrcText={lrc} currentTime={currentTime} />
+          <Lyrics lrcPath={song.lyrics} currentTime={currentTime*1000} />
         </div>
 
       </div>
