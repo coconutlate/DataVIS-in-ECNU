@@ -75,3 +75,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.music-sub-audio {
+  width: 1000px;
+  height: 100px;
+  margin: 0 16px;
+
+}

@@ -35,7 +35,7 @@ function Lyrics({ lrcPath, currentTime }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('Fetching LRC file from:', lrcPath); // 查看 LRC 文件路径
+    // console.log('Fetching LRC file from:', lrcPath); // 查看 LRC 文件路径
     fetchLrcFile();
   }, [lrcPath]);
 
@@ -51,13 +51,13 @@ function Lyrics({ lrcPath, currentTime }) {
 
       // 获取文件内容
       const buffer = await resp.arrayBuffer();
-      console.log('Fetched LRC file successfully, decoding...');
+      // console.log('Fetched LRC file successfully, decoding...');
       const decoder = new TextDecoder('gb2312', { fatal: true, ignoreBOM: true });
       const text = decoder.decode(buffer);
 
       // 清洗文本，去除多余的换行符
       const cleanLrcText = text.replace(/[\r\n]+/g, '\n');
-      console.log('Cleaned LRC Text:', cleanLrcText);  // 调试：输出清洗后的歌词
+      // console.log('Cleaned LRC Text:', cleanLrcText);  // 调试：输出清洗后的歌词
 
       setLrcText(cleanLrcText);  // 设置清洗后的 LRC 内容
     } catch (err) {

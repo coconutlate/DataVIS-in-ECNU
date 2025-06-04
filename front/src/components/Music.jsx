@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Imaginative from './views/Music/Imaginative';
-// import Wave from './views/Music/Wave';
+import Wave from './views/Music/Wave';
 import SongController from './views/Music/SongController';
 import Lyrics from './views/Music/Lyrics';
 import '../styles/Music.css';
@@ -8,12 +8,8 @@ import '../styles/Music.css';
 
 const Music = ({ song }) => {
 
-  // 当前播放时间（单位：秒），用来驱动歌词滚动
   const [currentTime, setCurrentTime] = useState(0);
-  // 可选：如果想让 Music 组件知道当前是否在播放，也可以维护一个 isPlaying
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // 用来直接调用 SongController 内部 play()/pause()
+  const [audioEl, setAudioEl] = useState(null);
   const songControllerRef = useRef(null);
 
   // 当 ReactAudioWave 播放进度更新时，会传过来 time（秒）
@@ -21,14 +17,30 @@ const Music = ({ song }) => {
     setCurrentTime(time);
   };
 
-  // 当用户在 SongController 里点击「播放」按钮
+  // 当父组件想要拿内部 <audio> 时，可以这么写
+  useEffect(() => {
+    if (songControllerRef.current) {
+      const el = songControllerRef.current.getAudio();
+      if (el) {
+        setAudioEl(el);
+      }
+    }
+  }, []); // 如果你只想初始时拿一次，也可以留空依赖。或者根据其它逻辑在时机成熟时再拿。
+
   const handlePlayClick = () => {
-    setIsPlaying(true);
+    // 先让 SongController 播放
+    songControllerRef.current?.play();
+
+    // 再尝试立刻拿到 <audio>
+    const el = songControllerRef.current?.getAudio();
+    if (el) {
+      setAudioEl(el);
+      // el.play(); // 如果你想要在这里直接调用，也可以
+    }
   };
 
-  // 当用户在 SongController 里点击「暂停」按钮
   const handlePauseClick = () => {
-    setIsPlaying(false);
+    songControllerRef.current?.pause();
   };
 
   
@@ -49,14 +61,13 @@ const Music = ({ song }) => {
 
         <div className="music-chart">
           {/* react-audio-visualize */}
-          <h1>频谱图</h1> 
-          {/* {analyserNode && <Wave analyserNode={analyserNode} />} */}
+          {audioEl && <Wave audioElement={audioEl} />}
         </div>
 
         <div className="music-audio">
           {/* react-audio-wave */}
           <SongController
-          ref={songControllerRef}
+            ref={songControllerRef}
             audioSrc={song.music_url}
             onTimeChange={handleTimeChange}
             onPlayClick={handlePlayClick}

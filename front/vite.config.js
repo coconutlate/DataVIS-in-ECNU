@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['echarts', 'echarts-wordcloud','react-audio-wave']
+    include: ['echarts', 'echarts-wordcloud','react-audio-wave', 'react-audio-visualize']
   },
 })
 

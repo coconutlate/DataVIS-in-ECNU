@@ -1,26 +1,41 @@
 // https://github.com/llaurora/react-audio-wave?utm_source=chatgpt.com
 
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { useState, forwardRef, useImperativeHandle, useRef, useCallback } from 'react';
 // import { ReactAudioWave } from 'react-audio-wave';
 import { ReactAudioWave } from 'react-audio-wave/dist/react-audio-wave.cjs.js';
+import '../../../styles/Music.css';
 
 const SongController = forwardRef(({ audioSrc, onTimeChange, onPlayClick, onPauseClick }, ref) => {
 
-  const waveRef = useRef(null);
+  const containerRef = useRef(null);
+  const [internalAudio, setInternalAudio] = useState(null);
 
-  // 暴露给父组件的 API：play()、pause()
-  useImperativeHandle(ref, () => ({
-    play: () => {
-      if (waveRef.current) {
-        waveRef.current.play();
-      }
-    },
-    pause: () => {
-      if (waveRef.current) {
-        waveRef.current.pause();
+  // 当 ReactAudioWave 加载状态改变时触发
+  const handleLoadStateChange = useCallback(loadState => {
+    if (loadState === 2 && containerRef.current) {
+      // 通过容器 ref，去查找子节点中的 <audio>
+      const audioEl = containerRef.current.querySelector('.wave-container audio');
+      if (audioEl) {
+        console.log('>>> 找到内部 <audio>：', audioEl);
+        setInternalAudio(audioEl);
       }
     }
-  }));
+  }, []);
+
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      // 如果想直接触发播放，也可以用 internalAudio.play()
+      // 但这里仍然让 ReactAudioWave 自己去管理波形播放
+      containerRef.current.querySelector('.wave-container canvas')?.dispatchEvent(new Event('play')); 
+      // （或者直接调用 wave 播放 API，这里仅示意。）
+    },
+    pause: () => {
+      // 同理，这里用 internalAudio.pause() 也行
+      internalAudio && internalAudio.pause();
+    },
+    getAudio: () => internalAudio
+  }), [internalAudio]);
+
 
   const colors = {
     waveColor: "#d8d8d8",
@@ -32,8 +47,8 @@ const SongController = forwardRef(({ audioSrc, onTimeChange, onPlayClick, onPaus
       <button
         onClick={() => {
           // 调用内部 wave.play()
-          if (waveRef.current) {
-            waveRef.current.play();
+          if (internalAudio) {
+            internalAudio.play();
           }
           // 通知父组件：播放事件发生了
           if (onPlayClick) onPlayClick();
@@ -42,33 +57,24 @@ const SongController = forwardRef(({ audioSrc, onTimeChange, onPlayClick, onPaus
       >
         播放
       </button>
-      <div style={{ width: '600px', height: '100px', margin: '0 16px' }}>
+      <div className='music-sub-audio' ref={containerRef}>
         <ReactAudioWave
-          ref={waveRef}
           supportPlaybackRate
           audioSrc={audioSrc}
           waveHeight={100}
           colors={colors}
           placeholder={"wait"}
-          // 当 wave 内部更新 currentTime（播放进度）时，调用父组件 onTimeChange
-          onCurrentTimeChange={(time) => {
-            if (onTimeChange) onTimeChange(time);
-          }}
-          // 当用户点击 wave 上的“播放”按钮
-          onPlay={() => {
-            if (onPlayClick) onPlayClick();
-          }}
-          // 当用户点击 wave 上的“暂停”按钮
-          onPause={() => {
-            if (onPauseClick) onPauseClick();
-          }}
+          onCurrentTimeChange={time => onTimeChange?.(time)}
+          onPlay={() => onPlayClick?.()}
+          onPause={() => onPauseClick?.()}
+          onChangeLoadState={handleLoadStateChange}
         />
       </div>
       <button
         onClick={() => {
           // 调用内部 wave.pause()
-          if (waveRef.current) {
-            waveRef.current.pause();
+          if (internalAudio) {
+            internalAudio.pause();
           }
           // 通知父组件：暂停事件发生了
           if (onPauseClick) onPauseClick();
